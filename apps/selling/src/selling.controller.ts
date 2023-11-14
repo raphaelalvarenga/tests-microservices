@@ -6,17 +6,17 @@ import { MessagePattern } from '@nestjs/microservices';
 export class SellingController {
   constructor(private readonly sellingService: SellingService) {}
 
-  @MessagePattern("GET_STOCK")
+  @MessagePattern("GET_SELLING")
   get(): string {
     return this.sellingService.get();
   }
 
-  @MessagePattern("CREATE_STOCK")
+  @MessagePattern("CREATE_SELLING")
   create() {
     return this.sellingService.create();
   }
 
-  @MessagePattern("UPDATE_STOCK")
+  @MessagePattern("UPDATE_SELLING")
   update() {
     return this.sellingService.update()
   }
