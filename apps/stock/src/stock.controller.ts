@@ -13,6 +13,7 @@ export class StockController {
 
   @MessagePattern("CREATE_STOCK")
   create() {
+    console.log("Chegou aqui");
     return this.stockService.create();
   }
 

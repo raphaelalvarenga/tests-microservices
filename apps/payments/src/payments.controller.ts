@@ -13,7 +13,6 @@ export class PaymentsController {
 
   @MessagePattern("CREATE_PAYMENT")
   create() {
-    console.log("CHEGOU AQUI");
     return this.paymentsService.create();
   }
 

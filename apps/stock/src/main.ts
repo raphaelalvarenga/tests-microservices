@@ -6,10 +6,13 @@ async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     StockModule,
     {
-      transport: Transport.TCP,
+      transport: Transport.RMQ,
       options: {
-        host: 'localhost',
-        port: 3001
+        urls: ['amqp://localhost:5672'],
+        queue: 'stock_queue',
+        queueOptions: {
+          durable: false
+        },
       }
     }
   );

@@ -1,18 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { ClientProxy } from '@nestjs/microservices';
 import { DatabaseService } from 'y/database';
 
 @Injectable()
 export class PaymentsService {
   private entity = "Payment"
   
-  constructor(private databaseService: DatabaseService) {}
+  constructor(
+    private databaseService: DatabaseService,
+    @Inject("STOCK") private stockClient: ClientProxy
+  ) { }
   
   get(): string {
     return this.databaseService.find(this.entity);
   }
 
   create() {
-    return this.databaseService.create(this.entity)
+    this.databaseService.create(this.entity)
+    this.stockClient.emit("CREATE_STOCK", {})
   }
 
   update() {
