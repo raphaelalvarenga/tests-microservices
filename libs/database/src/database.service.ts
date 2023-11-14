@@ -3,10 +3,14 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class DatabaseService {
     find(entity: string) {
-        return `Here is all ${entity}`;
+        return `${entity} listed`;
     }
 
     create(entity: string) {
-        return `Created a ${entity}`
+        return `${entity} created`
+    }
+
+    update(entity: string) {
+        return `${entity} updated`;
     }
 }

@@ -1,8 +1,21 @@
 import { Injectable } from '@nestjs/common';
+import { DatabaseService } from 'y/database';
 
 @Injectable()
 export class StockService {
-  getHello(): string {
-    return 'Hello World!';
+  private entity = "Stock"
+  
+  constructor(private databaseService: DatabaseService) {}
+  
+  get(): string {
+    return this.databaseService.find(this.entity);
+  }
+
+  create() {
+    return this.databaseService.create(this.entity)
+  }
+
+  update() {
+    return this.databaseService.update(this.entity)
   }
 }
