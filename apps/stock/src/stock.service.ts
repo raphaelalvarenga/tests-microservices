@@ -12,6 +12,7 @@ export class StockService {
   }
 
   create() {
+    console.log("Chegou aqui");
     return this.databaseService.create(this.entity)
   }
 
